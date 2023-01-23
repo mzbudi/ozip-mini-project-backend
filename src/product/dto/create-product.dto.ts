@@ -30,4 +30,8 @@ export class CreateProductDto {
   @IsNotEmpty()
   @MaxLength(200)
   description: string;
+
+  @IsNumber()
+  @IsNotEmpty()
+  stock: number;
 }

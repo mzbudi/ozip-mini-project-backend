@@ -8,4 +8,5 @@ export interface IProduct extends Document {
   total_stars: number;
   total_rated: number;
   description: string;
+  stock: number;
 }
