@@ -15,4 +15,10 @@ export class UsersService {
   async getUser(query: object): Promise<IUsers> {
     return this.userModel.findOne(query);
   }
+
+  async findUserByUsername(username: string): Promise<IUsers> {
+    return this.userModel.findOne({
+      username,
+    });
+  }
 }
