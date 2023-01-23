@@ -6,14 +6,17 @@ import {
   HttpStatus,
   Res,
   Body,
+  UseGuards,
 } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { CreateProductDto } from './dto';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @Controller('product')
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Post()
   async createProduct(@Res() res, @Body() createProductDto: CreateProductDto) {
     try {
@@ -30,6 +33,7 @@ export class ProductController {
     }
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get()
   async getProducts(@Res() res) {
     try {
@@ -43,6 +47,7 @@ export class ProductController {
     }
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get('/:id')
   async getProductById(@Res() res, @Param('id') id: string) {
     try {
