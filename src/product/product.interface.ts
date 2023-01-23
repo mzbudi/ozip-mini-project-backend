@@ -9,4 +9,5 @@ export interface IProduct extends Document {
   total_rated: number;
   description: string;
   stock: number;
+  photo: string[];
 }
